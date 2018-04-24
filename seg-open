@@ -1,7 +1,7 @@
 import sys, paramiko
 
  
- password = sys.argv[1]
+ password = ******
  base = raw_input("Enter base segmant: ")
  vlan = raw_input("Enter vlan: ")
  vlan_name = raw_input("Enter vlan name: ")

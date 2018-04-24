@@ -1,14 +1,14 @@
 import sys, paramiko
 
-if len(sys.argv) < 4;
-  print "argument is missing"
-  sys.exit(1)
  
  password = sys.argv[1]
- base = sys.argv[2]
+ base = raw_input("Enter base segmant: ")
  vlan = raw_input("Enter vlan: ")
  vlan_name = raw_input("Enter vlan name: ")
  
+ dict = {'100': 'eth1', '200': eth2, '300': 'eth3'}
+ 
+ base_lan_interface = dict[base]
  hostnamefirst= XXX.XXX.base.251
  hostnamesecond= XXX.XXX.base.252
  username = "ben"
@@ -26,4 +26,17 @@ if len(sys.argv) < 4;
      stdin, stdout, stderr = client.exec_command(save config)
 
 finally:
-    clien
+    client.close()
+
+try:
+     client = paramiko.SSHClient()
+     client.connect(hostname=hostnamesecond, port=port, username=username, password=password)
+     stdin, stdout, stderr = client.exec_command(add interface "base_lan_interface" vlan "vlan")
+     stdin, stdout, stderr = client.exec_command(set interface "base_lan_interface" state on)
+     stdin, stdout, stderr = client.exec_command(set interface "base_lan_interface"+"."+"vlan" comments "vlan_name")
+     stdin, stdout, stderr = client.exec_command(set interface "base_lan_interface"+"."+"vlan" state on)
+     stdin, stdout, stderr = client.exec_command(set interface "base_lan_interface"+"."+"vlan" ipv4-address "XXX.base.vlan.252)
+     stdin, stdout, stderr = client.exec_command(save config)
+
+finally:
+    client.close()
